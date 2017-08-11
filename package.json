@@ -1,0 +1,71 @@
+{
+	"name": "metal-dropdown-webpack",
+	"version": "0.0.0",
+	"description": "My awesome Metal.js project",
+	"license": "BSD",
+	"repository": "my-user/metal-dropdown-webpack",
+	"engines": {
+		"node": ">=0.12.0",
+		"npm": ">=3.0.0"
+	},
+	"main": "lib/DropdownWebpack.js",
+	"jsnext:main": "src/DropdownWebpack.js",
+	"files": [
+		"lib",
+		"src",
+		"test"
+	],
+	"scripts": {
+		"build": "npm run soy && webpack",
+		"compile": "babel --presets metal -d lib/ src/",
+		"dev": "concurrently -k 'npm run soy:watch' 'npm run start'",
+		"postinstall": "npm run build",
+		"prepublish": "npm run soy && npm run compile",
+		"soy": "metalsoy --soyDeps node_modules/metal*/src/**/*.soy node_modules/clay*/src/**/*.soy",
+		"soy:watch": "metal-soy-watch",
+		"start": "webpack-dev-server --open",
+		"test": "npm run soy && jest"
+	},
+	"keywords": [
+		"metal"
+	],
+	"babel": {
+		"presets": [
+			"metal"
+		]
+	},
+	"dependencies": {
+		"bootstrap": "^3.3.6",
+		"metal-position": "2.1.0",
+		"metal-soy": "^2.0.0"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.4.5",
+		"babel-core": "^6.25.0",
+		"babel-loader": "^7.0.0",
+		"babel-plugin-transform-node-env-inline": "^0.1.1",
+		"babel-preset-metal": "^4.0.0",
+		"concurrently": "^3.5.0",
+		"css-loader": "^0.28.4",
+		"identity-obj-proxy": "^3.0.0",
+		"jest": "^20.0.4",
+		"metal-lerna-jest-resolver": "^1.0.0",
+		"metal-jest-serializer": "^1.0.1",
+		"metal-tools-soy": "^4.2.1",
+		"node-sass": "^4.5.3",
+		"sass-loader": "^6.0.6",
+		"metal-soy-watch": "2.0.0",
+		"style-loader": "^0.18.2",
+		"webpack": "^3.0.0",
+		"webpack-dev-server": "^2.6.1"
+	},
+	"jest": {
+		"resolver": "metal-lerna-jest-resolver",
+		"snapshotSerializers": [
+			"metal-jest-serializer"
+		],
+		"moduleNameMapper": {
+			"^.+\\.scss$": "identity-obj-proxy"
+		}
+	}
+}

@@ -24,6 +24,10 @@ can find it [here](https://nodejs.org).
   ```
   npm run start
   ```
+  or for watch mode
+  ```
+  npm run dev
+  ```
 
 5. Open the demo at http://localhost:4000/demos in your browser.
 

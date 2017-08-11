@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Demo: Dropdown Webpack</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<script src="../build/globals/dropdown-webpack.js"></script>
+</head>
+<body>
+	<h1>Dropdown Webpack</h1>
+
+	<h3>From HTML</h3>
+	<div id="htmlDropdown" class="dropdown">
+		<button data-onclick="toggle" class="btn btn-primary">HTML <span class="caret"></span></button>
+		<div class="dropdown-menu">
+			<li><a href="#">HTML Content</a></li>
+		</div>
+	</div>
+
+	<h3>From JS</h3>
+
+	<script type="text/javascript">
+		window.dropdown = new metal.DropdownWebpack({
+			alignElementSelector: 'button',
+			header: '<button data-onclick="toggle" class="btn btn-primary">Dropdown <span class="caret"></span></button>',
+			body: '<li><a href="#">Action</a></li><li><a href="#">Another action</a></li><li><a href="#">Something else here</a></li><li><a href="#">Separated link</a></li>'
+		});
+		new metal.DropdownWebpack({
+			position: 'up',
+			header: '<button data-onclick="toggle" class="btn btn-primary">Dropup <span class="caret"></span></button>',
+			body: '<li><a href="#">Sign out</a></li>'
+		});
+		new metal.DropdownWebpack({
+			element: '#htmlDropdown'
+		});
+	</script>
+</body>
+</html>
